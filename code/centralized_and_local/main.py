@@ -14,30 +14,44 @@ from tqdm import tqdm
 import random
 from time import time
 import tensorflow as tf
-import tensorflow.keras
-from tensorflow.keras import metrics
-from tensorflow.keras.models import model_from_json,Model, load_model
-from tensorflow.keras.layers import Dense,concatenate, Dropout, Conv1D, Flatten, Reshape, Activation,multiply,MaxPooling1D,Add,AveragePooling1D,Lambda,Permute
-from tensorflow.keras.losses import categorical_crossentropy
-from tensorflow.keras import regularizers
-from tensorflow.keras.optimizers import Adadelta,Adam, SGD, Nadam,Adamax, Adagrad
-from tensorflow.python.keras.layers.normalization import BatchNormalization
-from tensorflow.keras.initializers import glorot_uniform
+import keras
+from keras import metrics
+from keras.models import model_from_json, Model, load_model
+from keras.layers import (
+    Dense,
+    concatenate,
+    Dropout,
+    Conv1D,
+    Flatten,
+    Reshape,
+    Activation,
+    multiply,
+    MaxPooling1D,
+    Add,
+    AveragePooling1D,
+    Lambda,
+    Permute,
+)
+from keras.losses import categorical_crossentropy
+from keras import regularizers
+from keras.optimizers import Adadelta, Adam, SGD, Nadam, Adamax, Adagrad
+from keras.layers import BatchNormalization
+from keras.initializers import glorot_uniform
 from keras.regularizers import l2
 
 import sklearn
-from tensorflow.keras import backend as K
+from keras import backend as K
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import RobustScaler
 from sklearn.feature_selection import SelectKBest
 from sklearn.preprocessing import normalize
 
-from ModelHandler import add_model,load_model_structure, ModelHandler
+from ModelHandler import add_model, load_model_structure, ModelHandler
 from custom_metrics import *
 from sklearn.metrics import classification_report
 from sklearn.metrics import precision_recall_fscore_support as precision_recall_fscore
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 ############################
 # Fix the seed
@@ -110,20 +124,20 @@ def custom_label(y, strategy='one_hot'):
 
 
 def over_k(true,pred):
-    dicti = {}
-    for kth in range(100):
-        kth_accuracy = metrics.top_k_categorical_accuracy(true,pred,k=kth)
-        with tf.Session() as sess: this = kth_accuracy.eval()
-        dicti[kth] =this
-    return dicti
+	dicti = {}
+	for kth in range(100):
+		kth_accuracy = metrics.top_k_categorical_accuracy(true,pred,k=kth)
+		with tf.compat.v1.Session() as sess: this = kth_accuracy.eval()
+		dicti[kth] =this
+	return dicti
 
 
 def precison_recall_F1(model,Xtest,Ytest):
-    #####For recall and precison
-    y_pred = model.predict(Xtest)
-    y_pred_bool = np.argmax(y_pred, axis=1)
-    y_true_bool = np.argmax(Ytest, axis=1)
-    return precision_recall_fscore(y_true_bool, y_pred_bool,average='weighted')
+	#####For recall and precison
+	y_pred = model.predict(Xtest)
+	y_pred_bool = np.argmax(y_pred, axis=1)
+	y_true_bool = np.argmax(Ytest, axis=1)
+	return precision_recall_fscore(y_true_bool, y_pred_bool,average='weighted')
 
 
 def detecting_related_file_paths(path,categories,episodes):
