@@ -322,7 +322,7 @@ parser.add_argument(
     "--test_all_path",
     help="Location of all test",
     type=str,
-    default="/home/batool/FL/baseline_code/all_test/",
+    default="../../save_model_path/",  # Path relative to this file. (The data should be present in $PROJECT_ROOT/save_model_path/)
 )
 parser.add_argument(
     "--policy", default=[0.1, 0.1, 0.4, 0.4], help="policy in the downlink"

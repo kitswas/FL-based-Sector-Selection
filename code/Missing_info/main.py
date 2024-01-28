@@ -465,7 +465,7 @@ parser.add_argument(
     "--test_all_path",
     help="Location of all test",
     type=str,
-    default="/home/batool/FL/baseline_code/all_test/",
+    default="../../save_model_path/",  # Path relative to this file. (The data should be present in $PROJECT_ROOT/save_model_path/)
 )
 
 

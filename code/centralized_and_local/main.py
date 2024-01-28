@@ -270,7 +270,7 @@ parser.add_argument(
     "--model_folder",
     help="Location of the trained models folder",
     type=str,
-    default="/home/batool/FL-based-Sector-Selection/code/centerlized_and_per_episode/",
+    default="../../save_model_path/",  # Path relative to this file. (The data should be present in $PROJECT_ROOT/save_model_path/)
 )
 parser.add_argument(
     "--image_feature_to_use",
@@ -301,7 +301,7 @@ parser.add_argument(
     "--test_all_path",
     help="Location of all test",
     type=str,
-    default="/home/batool/FL/baseline_code/all_test/",
+    default="../../save_model_path/",  # Path relative to this file. (The data should be present in $PROJECT_ROOT/save_model_path/)
 )
 
 

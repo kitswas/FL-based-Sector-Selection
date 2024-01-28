@@ -200,7 +200,7 @@ def get_data(
 
 
 data_path = "/home/kitswas/Downloads/FLASH_Dataset_3_Processed"
-save_path = "./save_model_path/"
+save_path = "../../save_model_path/"  # Path relative to this file. (The data will be saved in $PROJECT_ROOT/save_model_path/)
 
 
 selected_paths = detecting_related_file_paths(
