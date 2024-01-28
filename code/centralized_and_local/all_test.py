@@ -14,40 +14,15 @@ from tqdm import tqdm
 import random
 from time import time
 import tensorflow as tf
-
-keras = tf.keras
-
+import keras
 from keras import metrics
-from keras.models import model_from_json, Model, load_model
-from keras.layers import (
-    Dense,
-    concatenate,
-    Dropout,
-    Conv1D,
-    Flatten,
-    Reshape,
-    Activation,
-    multiply,
-    MaxPooling1D,
-    Add,
-    AveragePooling1D,
-    Lambda,
-    Permute,
-)
+from keras.models import model_from_json,Model, load_model
+from keras.layers import Dense,concatenate, Dropout, Conv1D, Flatten, Reshape, Activation,multiply,MaxPooling1D,Add,AveragePooling1D,Lambda,Permute
 from keras.losses import categorical_crossentropy
 from keras import regularizers
-
-# Import optimizers Adadelta, Adam, SGD, Nadam,Adamax, Adagrad
-from keras.optimizers import (
-    adam_v2 as Adam,
-    adadelta_v2 as Adadelta,
-    adagrad_v2 as Adagrad,
-    adamax_v2 as Adamax,
-    nadam_v2 as Nadam,
-)
-from keras.optimizer_v2.gradient_descent import SGD
-from keras.layers.normalization.batch_normalization import BatchNormalization
-from keras.initializers.initializers_v2 import GlorotUniform
+from keras.optimizers import Adadelta, Adam, SGD, Nadam,Adamax, Adagrad
+from keras.layers import BatchNormalization
+from keras.initializers import glorot_uniform
 from keras.regularizers import l2
 
 import sklearn

@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "fl-based-sector-selection"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+
+packages = [
+	{ include = "centralized_and_local/**/*.py", from = "code" },
+	{ include = "federated/**/*.py", from = "code" },
+	{ include = "Missing_info/main.py", from = "code" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+tensorflow = "2.15"
+scikit-learn = "^1.4.0"
+tqdm = "^4.66.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.1.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
