@@ -16,11 +16,25 @@ from time import time
 import tensorflow as tf
 import keras
 from keras import metrics
-from keras.models import model_from_json,Model, load_model
-from keras.layers import Dense,concatenate, Dropout, Conv1D, Flatten, Reshape, Activation,multiply,MaxPooling1D,Add,AveragePooling1D,Lambda,Permute
+from keras.models import model_from_json, Model, load_model
+from keras.layers import (
+    Dense,
+    concatenate,
+    Dropout,
+    Conv1D,
+    Flatten,
+    Reshape,
+    Activation,
+    multiply,
+    MaxPooling1D,
+    Add,
+    AveragePooling1D,
+    Lambda,
+    Permute,
+)
 from keras.losses import categorical_crossentropy
 from keras import regularizers
-from keras.optimizers import Adadelta, Adam, SGD, Nadam,Adamax, Adagrad
+from keras.optimizers import Adadelta, Adam, SGD, Nadam, Adamax, Adagrad
 from keras.layers import BatchNormalization
 from keras.initializers import glorot_uniform
 from keras.regularizers import l2
@@ -166,56 +180,27 @@ def get_data(
     for l in tqdm(data_paths):
         randperm = np.load(l + "/ranperm.npy")
         open_file = open_npz(l + "/" + modality + ".npz", key)
-        try:
-            test_data = np.concatenate(
-                (test_data, open_file[randperm[int(0.9 * len(randperm)) :]]), axis=0
-            )
 
-        except NameError:
-            test_data = open_file[randperm[int(0.9 * len(randperm)) :]]
+        test_data = open_file[randperm[int(0.9 * len(randperm)) :]]
 
         ###Get data per category
         if "Cat1" in l.split("/"):
-            try:
-                test_data_cat1 = np.concatenate(
-                    (test_data_cat1, open_file[randperm[int(0.9 * len(randperm)) :]]),
-                    axis=0,
-                )
-            except NameError:
-                test_data_cat1 = open_file[randperm[int(0.9 * len(randperm)) :]]
+            test_data_cat1 = open_file[randperm[int(0.9 * len(randperm)) :]]
 
         elif "Cat2" in l.split("/"):
-            try:
-                test_data_cat2 = np.concatenate(
-                    (test_data_cat2, open_file[randperm[int(0.9 * len(randperm)) :]]),
-                    axis=0,
-                )
-            except NameError:
-                test_data_cat2 = open_file[randperm[int(0.9 * len(randperm)) :]]
+            test_data_cat2 = open_file[randperm[int(0.9 * len(randperm)) :]]
 
         elif "Cat3" in l.split("/"):
-            try:
-                test_data_cat3 = np.concatenate(
-                    (test_data_cat3, open_file[randperm[int(0.9 * len(randperm)) :]]),
-                    axis=0,
-                )
-            except NameError:
-                test_data_cat3 = open_file[randperm[int(0.9 * len(randperm)) :]]
+            test_data_cat3 = open_file[randperm[int(0.9 * len(randperm)) :]]
 
         elif "Cat4" in l.split("/"):
-            try:
-                test_data_cat4 = np.concatenate(
-                    (test_data_cat4, open_file[randperm[int(0.9 * len(randperm)) :]]),
-                    axis=0,
-                )
-            except NameError:
-                test_data_cat4 = open_file[randperm[int(0.9 * len(randperm)) :]]
+            test_data_cat4 = open_file[randperm[int(0.9 * len(randperm)) :]]
 
     return test_data, test_data_cat1, test_data_cat2, test_data_cat3, test_data_cat4
 
 
-data_path = "/home/batool/FL/data_half_half_size"
-save_path = "/home/batool/FL/baseline_code/all_test/"
+data_path = "/home/kitswas/Downloads/FLASH_Dataset_3_Processed"
+save_path = "./save_model_path/"
 
 
 selected_paths = detecting_related_file_paths(
