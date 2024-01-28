@@ -14,10 +14,10 @@ from tqdm import tqdm
 import random
 from time import time
 import tensorflow as tf
-import tensorflow.keras
-from tensorflow.keras import metrics
-from tensorflow.keras.models import model_from_json, Model, load_model
-from tensorflow.keras.layers import (
+import keras
+from keras import metrics
+from keras.models import model_from_json, Model, load_model
+from keras.layers import (
     Dense,
     concatenate,
     Dropout,
@@ -32,15 +32,15 @@ from tensorflow.keras.layers import (
     Lambda,
     Permute,
 )
-from tensorflow.keras.losses import categorical_crossentropy
-from tensorflow.keras import regularizers
-from tensorflow.keras.optimizers import Adadelta, Adam, SGD, Nadam, Adamax, Adagrad
-from tensorflow.python.keras.layers.normalization import BatchNormalization
-from tensorflow.keras.initializers import glorot_uniform
+from keras.losses import categorical_crossentropy
+from keras import regularizers
+from keras.optimizers import Adadelta, Adam, SGD, Nadam, Adamax, Adagrad
+from keras.layers.normalization import BatchNormalization
+from keras.initializers import glorot_uniform
 from keras.regularizers import l2
 
 import sklearn
-from tensorflow.keras import backend as K
+from keras import backend as K
 from sklearn.model_selection import KFold
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import RobustScaler
@@ -51,7 +51,7 @@ from ModelHandler import add_model, load_model_structure, ModelHandler
 from custom_metrics import *
 from sklearn.metrics import classification_report
 from sklearn.metrics import precision_recall_fscore_support as precision_recall_fscore
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 ############################
 # Fix the seed

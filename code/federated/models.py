@@ -1,6 +1,6 @@
 from __future__ import division
 import tensorflow as tf
-from tensorflow.keras.layers import (
+from keras.layers import (
     BatchNormalization,
     LeakyReLU,
     Conv2D,
@@ -18,15 +18,15 @@ from tensorflow.keras.layers import (
     Lambda,
 )
 
-from tensorflow.keras.models import Model, Sequential
-from tensorflow.keras import regularizers
-from tensorflow.keras.models import model_from_json
+from keras.models import Model, Sequential
+from keras import regularizers
+from keras.models import model_from_json
 
-import tensorflow.keras.utils
+import keras.utils
 import numpy as np
 import copy
 import os
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 
 def add_model(model_flag, model, save_path):

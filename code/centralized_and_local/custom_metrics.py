@@ -1,5 +1,5 @@
 import tensorflow as tf
-from tensorflow.keras import metrics
+from keras import metrics
 from keras import backend as K
 import numpy as np
 from sklearn.metrics import confusion_matrix, f1_score, precision_score, recall_score
@@ -51,7 +51,7 @@ def R2_metric(y_true, y_pred):
 
 
 ########## FUNCTIONS TO CALCULATE F SCORE OF THE MODEL ###############
-from tensorflow.keras import backend as K
+from keras import backend as K
 
 
 def recall_m(y_true, y_pred):
