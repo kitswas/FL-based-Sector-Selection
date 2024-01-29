@@ -20,6 +20,10 @@ poetry install # install dependencies
 poetry shell # activate the virtual environment
 ```
 
+> [!IMPORTANT]  
+> The prerequisites listed above have changed since the original publication of the paper.  
+> To see the list of dependencies, please refer to the [`pyproject.toml`](./pyproject.toml) file.
+
 Poetry will create a virtual environment and install all the dependencies in it. The virtual environment can be deactivated by running `exit` or closing the terminal.
 
 ### Cite This paper
