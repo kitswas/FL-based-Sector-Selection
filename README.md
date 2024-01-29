@@ -43,6 +43,9 @@ python all_test.py
 
 Finally, you can run the local and centerlized learning schemes as below:
 
+> [!TIP]  
+> Skip the `model_folder` and `test_all_path` arguments to use the new default path. (i.e. [`./save_model_path`](./save_model_path)).
+
 #### Centerlized Learning
 
 ```bash
