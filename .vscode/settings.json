@@ -1,6 +1,7 @@
 {
 	"python.analysis.extraPaths": [
-		"./code/centralized_and_local"
+		"./code/centralized_and_local",
+		"./code/federated"
 	],
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.typeCheckingMode": "basic"

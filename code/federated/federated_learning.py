@@ -36,10 +36,10 @@ from keras.layers import (
 from keras.losses import categorical_crossentropy
 from keras import regularizers
 from keras.optimizers import Adadelta, Adam, SGD, Nadam, Adamax, Adagrad
-from keras.layers.normalization import BatchNormalization
+from keras.layers import BatchNormalization
 from keras.initializers import glorot_uniform
 from keras.regularizers import l2
-from tensorflow import keras
+import keras
 
 import sklearn
 from keras import backend as K
