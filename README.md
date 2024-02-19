@@ -2,6 +2,10 @@
 
 The present code implements FLASH framework. The FLASH dataset is available in our public repository [here](https://genesys-lab.org/multimodal-fusion-nextg-v2x-communications).
 
+> [!NOTE]
+> The default download from the server using wget or via browser is only ~500KBps.  
+> Use a download accelerator and download the file in 20 parts/chunks. Try [JDownloader](https://jdownloader.org/)(GUI) or [Axel](https://github.com/axel-download-accelerator/axel)(CLI)
+
 ### Pre-requisites
 
 - Python 3.8.3
