@@ -69,7 +69,7 @@ python main.py --data_folder path_to_data --input coord img lidar --epochs 100 -
 To access the code of the FLASH architecture see "code/federated". A bash script is included in the repository that performs aggregation on the entire global model. Simply, run the bash script by passing the path to the data and model directory as:
 
 ```bash
-./run_FLASH.sh path_to_data_directory path_to_save_models
+./run_flash.sh path_to_data_directory path_to_save_models
 ```
 
 To explore different aggregation policies adjust the "policy" through argparse arguments.
