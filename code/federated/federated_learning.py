@@ -446,7 +446,10 @@ if "img" in args.input:
             + ".json"
         )
         img_model.load_weights(
-            args.model_folder + "best_weights.img_" + args.image_feature_to_use + ".keras",
+            args.model_folder
+            + "best_weights.img_"
+            + args.image_feature_to_use
+            + ".keras",
             by_name=True,
         )
     else:
