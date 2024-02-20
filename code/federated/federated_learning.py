@@ -416,7 +416,7 @@ if "coord" in args.input:
     if args.restore_models:
         coord_model = load_model_structure(args.model_folder + "coord_model.json")
         coord_model.load_weights(
-            args.model_folder + "best_weights.coord.h5", by_name=True
+            args.model_folder + "best_weights.coord.keras", by_name=True
         )
     else:
         coord_model = modelHand.createArchitecture(
@@ -446,7 +446,7 @@ if "img" in args.input:
             + ".json"
         )
         img_model.load_weights(
-            args.model_folder + "best_weights.img_" + args.image_feature_to_use + ".h5",
+            args.model_folder + "best_weights.img_" + args.image_feature_to_use + ".keras",
             by_name=True,
         )
     else:
@@ -473,7 +473,7 @@ if "lidar" in args.input:
     if args.restore_models:
         lidar_model = load_model_structure(args.model_folder + "lidar_model.json")
         lidar_model.load_weights(
-            args.model_folder + "best_weights.lidar.h5", by_name=True
+            args.model_folder + "best_weights.lidar.keras", by_name=True
         )
     else:
         lidar_model = modelHand.createArchitecture(
@@ -582,7 +582,7 @@ for comm_round in range(args.latest_step, comms_round):
     elif comm_round > 0:
         # set local model weight to the weight of the latest local model
         latest_global_model = keras.models.load_model(
-            args.model_folder + "global_model.h5",
+            args.model_folder + "global_model.keras",
             custom_objects={
                 "top_2_accuracy": top_2_accuracy,
                 "top_5_accuracy": top_5_accuracy,
@@ -608,7 +608,7 @@ for comm_round in range(args.latest_step, comms_round):
         elif comm_round > 0:
             # set local model weight to the weight of the latest local model
             local_model.load_weights(
-                args.model_folder + "latest_local_model_client_" + client + ".h5"
+                args.model_folder + "latest_local_model_client_" + client + ".keras"
             )
 
         (
@@ -723,7 +723,7 @@ for comm_round in range(args.latest_step, comms_round):
             ],
         )
         local_model.save(
-            args.model_folder + "latest_local_model_client_" + client + ".h5"
+            args.model_folder + "latest_local_model_client_" + client + ".keras"
         )
         local_weight_list.append(local_model.get_weights())
 
@@ -731,7 +731,7 @@ for comm_round in range(args.latest_step, comms_round):
     average_weights = sum_scaled_weights(local_weight_list)
 
     global_model.set_weights(average_weights)
-    global_model.save(args.model_folder + "global_model.h5")
+    global_model.save(args.model_folder + "global_model.keras")
 
     print("*********Test per vehicle*************")
     top_1 = []

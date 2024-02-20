@@ -570,7 +570,7 @@ if "coord" in args.input:
     if args.restore_models:
         coord_model = load_model_structure(args.model_folder + "coord_model.json")
         coord_model.load_weights(
-            args.model_folder + "best_weights.coord.h5", by_name=True
+            args.model_folder + "best_weights.coord.keras", by_name=True
         )
     else:
         coord_model = modelHand.createArchitecture(
@@ -600,7 +600,7 @@ if "img" in args.input:
             + ".json"
         )
         img_model.load_weights(
-            args.model_folder + "best_weights.img_" + args.image_feature_to_use + ".h5",
+            args.model_folder + "best_weights.img_" + args.image_feature_to_use + ".keras",
             by_name=True,
         )
         # img_model.trainable = False
@@ -628,7 +628,7 @@ if "lidar" in args.input:
     if args.restore_models:
         lidar_model = load_model_structure(args.model_folder + "lidar_model.json")
         lidar_model.load_weights(
-            args.model_folder + "best_weights.lidar.h5", by_name=True
+            args.model_folder + "best_weights.lidar.keras", by_name=True
         )
     else:
         lidar_model = modelHand.createArchitecture(
@@ -710,7 +710,7 @@ if multimodal == 2:
             batch_size=args.bs,
             callbacks=[
                 keras.callbacks.ModelCheckpoint(
-                    args.model_folder + "best_weights.coord_lidar.h5",
+                    args.model_folder + "best_weights.coord_lidar.keras",
                     monitor="val_loss",
                     verbose=1,
                     save_best_only=True,
@@ -752,7 +752,7 @@ if multimodal == 2:
 
         print("***************Testing the model************")
         model.load_weights(
-            args.model_folder + "best_weights.coord_lidar.h5", by_name=True
+            args.model_folder + "best_weights.coord_lidar.keras", by_name=True
         )
         scores = model.evaluate(x_test, y_test)
         print(model.metrics_names, scores)
@@ -869,7 +869,7 @@ if multimodal == 2:
                     args.model_folder
                     + "best_weights.coord_img_"
                     + args.image_feature_to_use
-                    + ".h5",
+                    + ".keras",
                     monitor="val_loss",
                     verbose=1,
                     save_best_only=True,
@@ -914,7 +914,7 @@ if multimodal == 2:
             args.model_folder
             + "best_weights.coord_img_"
             + args.image_feature_to_use
-            + ".h5",
+            + ".keras",
             by_name=True,
         )
         scores = model.evaluate(x_test, y_test)
@@ -997,7 +997,7 @@ if multimodal == 2:
                     args.model_folder
                     + "best_weights.img_lidar_"
                     + args.image_feature_to_use
-                    + ".h5",
+                    + ".keras",
                     monitor="val_loss",
                     verbose=1,
                     save_best_only=True,
@@ -1042,7 +1042,7 @@ if multimodal == 2:
             args.model_folder
             + "best_weights.img_lidar"
             + args.image_feature_to_use
-            + ".h5",
+            + ".keras",
             by_name=True,
         )
         scores = model.evaluate(x_test, y_test)
@@ -1121,14 +1121,14 @@ elif multimodal == 3:
     )
     model.summary()
 
-    # hist = model.fit(x_train, y_train, validation_data=(x_validation, y_validation), epochs=args.epochs, batch_size=args.bs, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.coord_img_lidar_'+args.image_feature_to_use+'.h5', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=25, verbose=2,mode='auto')])
+    # hist = model.fit(x_train, y_train, validation_data=(x_validation, y_validation), epochs=args.epochs, batch_size=args.bs, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.coord_img_lidar_'+args.image_feature_to_use+'.keras', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=25, verbose=2,mode='auto')])
 
     # print(hist.history.keys())
     # print('loss',hist.history['loss'],'val_loss',hist.history['val_loss'],'categorical_accuracy', hist.history['categorical_accuracy'],'top_2_accuracy',hist.history['top_2_accuracy'],'top_5_accuracy',hist.history['top_5_accuracy'],'top_10_accuracy', hist.history['top_10_accuracy'],'top_25_accuracy',hist.history['top_25_accuracy'],'top_50_accuracy',hist.history['top_50_accuracy']
     #             ,'val_categorical_accuracy',hist.history['val_categorical_accuracy'],'val_top_2_accuracy',hist.history['val_top_2_accuracy'],'val_top_5_accuracy',hist.history['val_top_5_accuracy'],'val_top_10_accuracy',hist.history['val_top_10_accuracy'],'val_top_25_accuracy',hist.history['val_top_25_accuracy'],'val_top_50_accuracy',hist.history['val_top_50_accuracy'])
 
     # print('***************Testing the model************')
-    # model.load_weights(args.model_folder+'best_weights.coord_img_lidar_'+args.image_feature_to_use+'.h5', by_name=True)
+    # model.load_weights(args.model_folder+'best_weights.coord_img_lidar_'+args.image_feature_to_use+'.keras', by_name=True)
     # scores = model.evaluate(x_test, y_test)
     # print(model.metrics_names, scores)
 
@@ -1172,7 +1172,7 @@ elif multimodal == 3:
         args.model_folder
         + "best_weights.coord_img_lidar_"
         + args.image_feature_to_use
-        + ".h5",
+        + ".keras",
         by_name=True,
     )
     x_test = [Lidar_test, Image_test, gps_test]
@@ -1243,7 +1243,7 @@ else:
 
             call_backs = []
             # hist = model.fit(X_coord_train,y_train, validation_data=(X_coord_validation, y_validation),
-            # epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.coord.h5', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2, mode='auto')])
+            # epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.coord.keras', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2, mode='auto')])
 
             # print(hist.history.keys())
             # print('categorical_accuracy', hist.history['categorical_accuracy'],'top_2_accuracy',hist.history['top_2_accuracy'],'top_5_accuracy',hist.history['top_5_accuracy'],'top_10_accuracy', hist.history['top_10_accuracy'],'top_25_accuracy',hist.history['top_25_accuracy'],'top_50_accuracy',hist.history['top_50_accuracy']
@@ -1251,7 +1251,7 @@ else:
 
             print("***************Testing model************")
             model.load_weights(
-                args.model_folder + "best_weights.coord.h5", by_name=True
+                args.model_folder + "best_weights.coord.keras", by_name=True
             )  ## Restoring best weight for testing
             scores = model.evaluate(X_coord_test, y_test)
             print(model.metrics_names, scores)
@@ -1344,7 +1344,7 @@ else:
             )
             model.summary()
             # hist = model.fit(X_img_train,y_train, validation_data=(X_img_validation, y_validation),
-            # epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.img_'+args.image_feature_to_use+'.h5', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2, mode='auto')])
+            # epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle, callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.img_'+args.image_feature_to_use+'.keras', monitor='val_loss', verbose=1, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2, mode='auto')])
 
             # print(hist.history.keys())
             # print('categorical_accuracy', hist.history['categorical_accuracy'],'top_2_accuracy',hist.history['top_2_accuracy'],'top_5_accuracy',hist.history['top_5_accuracy'],'top_10_accuracy', hist.history['top_10_accuracy'],'top_25_accuracy',hist.history['top_25_accuracy'],'top_50_accuracy',hist.history['top_50_accuracy']
@@ -1355,7 +1355,7 @@ else:
                 args.model_folder
                 + "best_weights.img_"
                 + args.image_feature_to_use
-                + ".h5",
+                + ".keras",
                 by_name=True,
             )
             scores = model.evaluate(X_img_test, y_test)
@@ -1453,7 +1453,7 @@ else:
                 ],
             )
             model.summary()
-            # hist = model.fit(X_lidar_train,y_train, validation_data=(X_lidar_validation, y_validation),epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle,callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.lidar.h5', monitor='val_loss', verbose=2, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2,mode='auto')])
+            # hist = model.fit(X_lidar_train,y_train, validation_data=(X_lidar_validation, y_validation),epochs=args.epochs,batch_size=args.bs, shuffle=args.shuffle,callbacks=[keras.callbacks.ModelCheckpoint(args.model_folder+'best_weights.lidar.keras', monitor='val_loss', verbose=2, save_best_only=True,mode='auto'),keras.callbacks.EarlyStopping(monitor='val_loss', patience=15, verbose=2,mode='auto')])
 
             # print(hist.history.keys())
             # print('val_loss',hist.history['val_loss'],'categorical_accuracy', hist.history['categorical_accuracy'],'top_2_accuracy',hist.history['top_2_accuracy'],'top_5_accuracy',hist.history['top_5_accuracy'],'top_10_accuracy', hist.history['top_10_accuracy'],'top_25_accuracy',hist.history['top_25_accuracy'],'top_50_accuracy',hist.history['top_50_accuracy']
@@ -1461,7 +1461,7 @@ else:
 
             print("***************Testing model************")
             model.load_weights(
-                args.model_folder + "best_weights.lidar.h5", by_name=True
+                args.model_folder + "best_weights.lidar.keras", by_name=True
             )  # to be added
             scores = model.evaluate(X_lidar_test, y_test)
             print(model.metrics_names, scores)
