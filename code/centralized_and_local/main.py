@@ -577,14 +577,14 @@ if multimodal == 2:
             epochs=args.epochs,
             batch_size=args.bs,
             callbacks=[
-                tf.keras.callbacks.ModelCheckpoint(
+                keras.callbacks.ModelCheckpoint(
                     args.model_folder + "best_weights.coord_lidar.h5",
                     monitor="val_loss",
                     verbose=1,
                     save_best_only=True,
                     mode="auto",
                 ),
-                tf.keras.callbacks.EarlyStopping(
+                keras.callbacks.EarlyStopping(
                     monitor="val_loss", patience=25, verbose=2, mode="auto"
                 ),
             ],
@@ -732,7 +732,7 @@ if multimodal == 2:
             epochs=args.epochs,
             batch_size=args.bs,
             callbacks=[
-                tf.keras.callbacks.ModelCheckpoint(
+                keras.callbacks.ModelCheckpoint(
                     args.model_folder
                     + "best_weights.coord_img_"
                     + args.image_feature_to_use
@@ -742,7 +742,7 @@ if multimodal == 2:
                     save_best_only=True,
                     mode="auto",
                 ),
-                tf.keras.callbacks.EarlyStopping(
+                keras.callbacks.EarlyStopping(
                     monitor="val_loss", patience=25, verbose=2, mode="auto"
                 ),
             ],
@@ -861,7 +861,7 @@ if multimodal == 2:
             epochs=args.epochs,
             batch_size=args.bs,
             callbacks=[
-                tf.keras.callbacks.ModelCheckpoint(
+                keras.callbacks.ModelCheckpoint(
                     args.model_folder
                     + "best_weights.img_lidar_"
                     + args.image_feature_to_use
@@ -871,7 +871,7 @@ if multimodal == 2:
                     save_best_only=True,
                     mode="auto",
                 ),
-                tf.keras.callbacks.EarlyStopping(
+                keras.callbacks.EarlyStopping(
                     monitor="val_loss", patience=25, verbose=2, mode="auto"
                 ),
             ],
@@ -999,7 +999,7 @@ elif multimodal == 3:
         epochs=args.epochs,
         batch_size=args.bs,
         callbacks=[
-            tf.keras.callbacks.ModelCheckpoint(
+            keras.callbacks.ModelCheckpoint(
                 args.model_folder
                 + "best_weights.coord_img_lidar_"
                 + args.image_feature_to_use
@@ -1009,7 +1009,7 @@ elif multimodal == 3:
                 save_best_only=True,
                 mode="auto",
             ),
-            tf.keras.callbacks.EarlyStopping(
+            keras.callbacks.EarlyStopping(
                 monitor="val_loss", patience=25, verbose=2, mode="auto"
             ),
         ],
@@ -1139,14 +1139,14 @@ else:
                 batch_size=args.bs,
                 shuffle=args.shuffle,
                 callbacks=[
-                    tf.keras.callbacks.ModelCheckpoint(
+                    keras.callbacks.ModelCheckpoint(
                         args.model_folder + "best_weights.coord.h5",
                         monitor="val_loss",
                         verbose=1,
                         save_best_only=True,
                         mode="auto",
                     ),
-                    tf.keras.callbacks.EarlyStopping(
+                    keras.callbacks.EarlyStopping(
                         monitor="val_loss", patience=15, verbose=2, mode="auto"
                     ),
                 ],
@@ -1282,7 +1282,7 @@ else:
                 batch_size=args.bs,
                 shuffle=args.shuffle,
                 callbacks=[
-                    tf.keras.callbacks.ModelCheckpoint(
+                    keras.callbacks.ModelCheckpoint(
                         args.model_folder
                         + "best_weights.img_"
                         + args.image_feature_to_use
@@ -1292,7 +1292,7 @@ else:
                         save_best_only=True,
                         mode="auto",
                     ),
-                    tf.keras.callbacks.EarlyStopping(
+                    keras.callbacks.EarlyStopping(
                         monitor="val_loss", patience=15, verbose=2, mode="auto"
                     ),
                 ],
@@ -1437,14 +1437,14 @@ else:
                 batch_size=args.bs,
                 shuffle=args.shuffle,
                 callbacks=[
-                    tf.keras.callbacks.ModelCheckpoint(
+                    keras.callbacks.ModelCheckpoint(
                         args.model_folder + "best_weights.lidar.h5",
                         monitor="val_loss",
                         verbose=2,
                         save_best_only=True,
                         mode="auto",
                     ),
-                    tf.keras.callbacks.EarlyStopping(
+                    keras.callbacks.EarlyStopping(
                         monitor="val_loss", patience=15, verbose=2, mode="auto"
                     ),
                 ],

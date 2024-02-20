@@ -581,7 +581,7 @@ for comm_round in range(args.latest_step, comms_round):
         latest_global_model = global_model
     elif comm_round > 0:
         # set local model weight to the weight of the latest local model
-        latest_global_model = tf.keras.models.load_model(
+        latest_global_model = keras.models.load_model(
             args.model_folder + "global_model.h5",
             custom_objects={
                 "top_2_accuracy": top_2_accuracy,
@@ -713,7 +713,7 @@ for comm_round in range(args.latest_step, comms_round):
             batch_size=args.bs,
             verbose=1,
             callbacks=[
-                tf.keras.callbacks.EarlyStopping(
+                keras.callbacks.EarlyStopping(
                     monitor="val_loss",
                     patience=5,
                     verbose=2,
