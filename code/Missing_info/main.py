@@ -136,7 +136,7 @@ def over_k(true, pred):
     dicti = {}
     for kth in range(100):
         kth_accuracy = metrics.top_k_categorical_accuracy(true, pred, k=kth)
-        with tf.Session() as sess:
+        with tf.compat.v1.Session() as sess:
             this = kth_accuracy.eval()
         dicti[kth] = this
     return dicti
