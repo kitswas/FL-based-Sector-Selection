@@ -310,7 +310,7 @@ parser.add_argument(
     choices=["Cat1", "Cat2", "Cat3", "Cat4"],
 )
 parser.add_argument(
-    "--experiment_epiosdes",
+    "--experiment_episodes",
     nargs="*",
     default=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     help="episodes included",
@@ -347,7 +347,7 @@ print("start_time:", time())
 
 print("**********genrating train/validation data************")
 clients_data = {}
-for clients in tqdm(args.experiment_epiosdes):
+for clients in tqdm(args.experiment_episodes):
     selected_paths = detecting_related_file_paths(
         args.data_folder, args.experiment_catergories, clients
     )
@@ -597,7 +597,7 @@ for comm_round in range(args.latest_step, comms_round):
     local_weight_list = list()
 
     # loop through each client and create new local model
-    for client in args.experiment_epiosdes:
+    for client in args.experiment_episodes:
         print("*************trainigclient" + client + "**************")
         local_model = complete_model
         local_model.compile(loss=loss, optimizer=opt, metrics=metrics)

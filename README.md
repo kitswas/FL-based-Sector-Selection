@@ -58,10 +58,10 @@ python main.py --data_folder path_to_data --input coord img lidar --epochs 100 -
 
 #### Local Learning
 
-To run the local learning for each vehicle, pass the experiment_epiosdes individually as:
+To run the local learning for each vehicle, pass the experiment_episodes individually as:
 
 ```bash
-python main.py --data_folder path_to_data --input coord img lidar --epochs 100 --model_folder save_model_path --test_all_path path_to_global_testset_directory --experiment_epiosdes vehicle_id
+python main.py --data_folder path_to_data --input coord img lidar --epochs 100 --model_folder save_model_path --test_all_path path_to_global_testset_directory --experiment_episodes vehicle_id
 ```
 
 ### Run Federated Learning framework

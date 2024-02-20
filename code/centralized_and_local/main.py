@@ -289,7 +289,7 @@ parser.add_argument(
     choices=["Cat1", "Cat2", "Cat3", "Cat4"],
 )
 parser.add_argument(
-    "--experiment_epiosdes",
+    "--experiment_episodes",
     nargs="*",
     default=["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
     help="episodes included",
@@ -318,7 +318,7 @@ check_and_create(args.model_folder)
 
 print("******************Detecting related file paths*************************")
 selected_paths = detecting_related_file_paths(
-    args.data_folder, args.experiment_catergories, args.experiment_epiosdes
+    args.data_folder, args.experiment_catergories, args.experiment_episodes
 )
 ###############################################################################
 # Outputs ##needs to be changed
